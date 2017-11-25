@@ -2,12 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const usersRoutes = require('./routes/users');
+const jwt = require('jsonwebtoken');
 
 const api = express();
 
 api.use(morgan('tiny'));
-api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: true }));
+api.use(bodyParser.json());
 
 api.use('/api/users', usersRoutes);
 

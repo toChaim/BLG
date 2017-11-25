@@ -5,8 +5,8 @@ mongoose.Promise = Promise;
 
 mongoose
   .connect(process.env.MONGODB_URI || 'mongodb://localhost/GRATBOT')
-  .then(ret => {
-    console.log('Database Connected: ', ret);
+  .then(() => {
+    console.log('Database Connected:');
   })
   .catch(err => {
     if (process.env.ENV === 'devolopment') {
