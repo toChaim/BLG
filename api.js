@@ -1,4 +1,4 @@
-//modules
+// modules
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -12,7 +12,7 @@ api.use(morgan('tiny'));
 api.use(bodyParser.urlencoded({ extended: true }));
 api.use(bodyParser.json());
 
-//connect database
+// connect database
 mongoose.set('debug', true);
 mongoose.connect('mongodb://localhost/BLG');
 mongoose.Promise = Promise;
