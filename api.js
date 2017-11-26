@@ -5,6 +5,7 @@ const morgan = require('morgan');
 // const jwt = require('jsonwebtoken');
 // const bcrypt = require('bcrypt');
 // const mongoose = require('mongoose');
+const config = require('./config');
 const userRoutes = require('./routes/users');
 const gameRoutes = require('./routes/games');
 
