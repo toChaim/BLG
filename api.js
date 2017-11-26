@@ -1,19 +1,18 @@
 // modules
 const express = require('express');
 const morgan = require('morgan');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 // const jwt = require('jsonwebtoken');
 // const bcrypt = require('bcrypt');
-// const mongoose = require('mongoose');
-const config = require('./config');
+const { PORT } = require('./config');
 const userRoutes = require('./routes/users');
 const gameRoutes = require('./routes/games');
 
 // api setup
 const api = express();
 api.use(morgan('tiny'));
-// api.use(bodyParser.urlencoded({ extended: true }));
-// api.use(bodyParser.json());
+api.use(bodyParser.urlencoded({ extended: true }));
+api.use(bodyParser.json());
 
 // connect database
 // mongoose.set('debug', true);
@@ -123,9 +122,10 @@ api.use(morgan('tiny'));
 //     error: {}
 //   });
 // });
+
 api.use('/users', userRoutes);
 api.use('/', gameRoutes);
 
-api.listen(3000, () => {
+api.listen(PORT, () => {
   console.log('Server is listening on port 3000.');
 });
