@@ -10,7 +10,10 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
   User.findById(req.params.id)
-    .then(user => res.json(user))
+    .then(user => {
+      if (!user) return next();
+      res.json(user);
+    })
     .catch(err => next(err));
 });
 
