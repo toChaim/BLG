@@ -2,8 +2,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-// const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
 const { PORT } = require('./config');
 const userRoutes = require('./routes/users');
 const gameRoutes = require('./routes/games');
