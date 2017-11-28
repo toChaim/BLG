@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const { PORT, DEVELOPMENT } = require('./config');
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const gameRoutes = require('./routes/games');
 
@@ -61,7 +62,7 @@ api.use(bodyParser.json());
 //     return res.status(403).send({ message: 'No token provided.' });
 //   }
 // });
-
+api.use('/auth', authRoutes);
 api.use('/users', userRoutes);
 api.use('/', gameRoutes);
 
