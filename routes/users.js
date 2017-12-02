@@ -32,7 +32,7 @@ router.patch('/:id', ensureLogin, (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', ensureLogin, ensureCorrectUser, (req, res, next) => {
   User.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).json())
     .catch(err => next(err));
