@@ -1,5 +1,6 @@
 const { User } = require('../models');
 const router = require('express').Router();
+const { ensureLogin, ensureCorrectUser } = require('../middleware/auth');
 
 router.get('/', (req, res, next) => {
   User.find()
@@ -25,7 +26,7 @@ router.post('/', (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.patch('/:id', (req, res, next) => {
+router.patch('/:id', ensureLogin, (req, res, next) => {
   User.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(user => res.json(user))
     .catch(err => next(err));
