@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 
 exports.ensureLogin = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1];
+    const token =
+      req.headers.authorization && req.headers.authorization.split(' ')[1];
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
       if (decoded) {
         next();
