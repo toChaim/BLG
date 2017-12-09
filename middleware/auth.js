@@ -66,18 +66,4 @@ exports.ensureCorrectUser = (req, res, next) => {
     err.status = 401;
     next(err);
   }
-  // try {
-  //   const token = req.headers.authorization.split(' ')[1];
-  //   jwt.verify(token, SECRET_KEY, (err, decoded) => {
-  //     if (decoded.user_id === req.params.id) {
-  //       next();
-  //     } else {
-  //       var err = new Error('Unauthorized');
-  //       err.status = 401;
-  //       next(err);
-  //     }
-  //   });
-  // } catch (err) {
-  //   next(err);
-  // }
 };
