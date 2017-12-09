@@ -1,6 +1,6 @@
 const { User } = require('../models');
 const router = require('express').Router();
-const { ensureLogin, ensureCorrectUser } = require('../middleware/auth');
+const { ensureLoggedIn, ensureCorrectUser } = require('../middleware/auth');
 
 router.get('/', (req, res, next) => {
   User.find()
@@ -26,13 +26,13 @@ router.post('/', (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.patch('/:id', ensureLogin, (req, res, next) => {
+router.patch('/:id', ensureLoggedIn, (req, res, next) => {
   User.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(user => res.json(user))
     .catch(err => next(err));
 });
 
-router.delete('/:id', ensureLogin, ensureCorrectUser, (req, res, next) => {
+router.delete('/:id', ensureLoggedIn, ensureCorrectUser, (req, res, next) => {
   User.findByIdAndRemove(req.params.id)
     .then(() => res.status(204).json())
     .catch(err => next(err));
