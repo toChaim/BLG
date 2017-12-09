@@ -1,35 +1,42 @@
 const { SECRET_KEY } = require('../config');
 const jwt = require('jsonwebtoken');
+const { User } = require('../models');
 
-exports.hasLogin = reqAuth => {
-  if (!reqAuth) {
+exports.login = (req, res, next) => {
+  User.findOne({ username: req.body.username })
+    .then(user => {
+      user.comparePassword(req.body.password, (err, isMatch) => {
+        if (isMatch) {
+          var token = jwt.sign({ user_id: user.id }, SECRET_KEY);
+          res.json(token);
+        } else {
+          res.status(400).send('Invalid Credentials 1');
+        }
+      });
+    })
+    .catch(err => {
+      console.log('inner error');
+      var err = new Error('Invalid Credentials 2');
+      err.status = 400;
+      next(err);
+    });
+};
+
+exports.isLoggedIn = req => {
+  if (!req.headers.authorization) {
     return false;
   }
   try {
-    const token = reqAuth.split(' ')[1];
-    var temp = jwt.verify(token, SECRET_KEY);
-    console.log(temp);
+    const token = req.headers.authorization.split(' ')[1];
+    const decoded = jwt.verify(token, SECRET_KEY);
     return true;
   } catch (err) {
-    console.log(`*** debugger; ***`, err);
     return false;
   }
 };
 
-exports.ensureLogin = (req, res, next) => {
-  // const token =
-  //   req.headers.authorization && req.headers.authorization.split(' ')[1];
-  // jwt.verify(token, SECRET_KEY, (err, decoded) => {
-  //   if (decoded) {
-  //     next();
-  //   } else {
-  //     var err = new Error('No Lognin');
-  //     err.status = 401;
-  //     next(err);
-  //   }
-  // });
-  console.log('ensureLogin is not working. ');
-  if (exports.hasLogin(req.headers.authorization)) {
+exports.ensureLoggedIn = (req, res, next) => {
+  if (exports.isLoggedIn(req)) {
     next();
   } else {
     var err = new Error('No Lognin');
@@ -38,19 +45,39 @@ exports.ensureLogin = (req, res, next) => {
   }
 };
 
-exports.ensureCorrectUser = (req, res, next) => {
+exports.isCorrectUser = req => {
+  if (!req.headers.authorization) {
+    return false;
+  }
   try {
     const token = req.headers.authorization.split(' ')[1];
-    jwt.verify(token, SECRET_KEY, (err, decoded) => {
-      if (decoded.user_id === req.params.id) {
-        next();
-      } else {
-        var err = new Error('Unauthorized');
-        err.status = 401;
-        next(err);
-      }
-    });
+    const decoded = jwt.verify(token, SECRET_KEY);
+    return decoded.user_id === req.params.id;
   } catch (err) {
+    return false;
+  }
+};
+
+exports.ensureCorrectUser = (req, res, next) => {
+  if (exports.isCorrectUser(req)) {
+    next();
+  } else {
+    var err = new Error('Unauthorized');
+    err.status = 401;
     next(err);
   }
+  // try {
+  //   const token = req.headers.authorization.split(' ')[1];
+  //   jwt.verify(token, SECRET_KEY, (err, decoded) => {
+  //     if (decoded.user_id === req.params.id) {
+  //       next();
+  //     } else {
+  //       var err = new Error('Unauthorized');
+  //       err.status = 401;
+  //       next(err);
+  //     }
+  //   });
+  // } catch (err) {
+  //   next(err);
+  // }
 };
