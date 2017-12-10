@@ -24,8 +24,8 @@ router.get("/:id", (req, res, next) => {
 router.post(
   "/",
   (req, res, next) => {
-    var user = { username: req.body.username };
-    User.create(req.body)
+    var { username, password, email } = req.body;
+    User.create({ username, password, email })
       .then(user => {
         res.status(201);
         next();
