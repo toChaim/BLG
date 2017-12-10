@@ -1,24 +1,24 @@
 // modules
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const { PORT, DEVELOPMENT } = require('./config');
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/users');
-const gameRoutes = require('./routes/games');
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const { PORT, DEVELOPMENT } = require("./config");
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/users");
+const gameRoutes = require("./routes/games");
 
 // api setup
-const api = require('express')();
-api.use(morgan('tiny'));
+const api = require("express")();
+api.use(morgan("tiny"));
 api.use(bodyParser.urlencoded({ extended: true }));
 api.use(bodyParser.json());
 
 // routes
-api.use('/auth', authRoutes);
-api.use('/users', userRoutes);
-api.use('/', gameRoutes);
+api.use("/auth", authRoutes);
+api.use("/users", userRoutes);
+api.use("/", gameRoutes);
 
 api.use((req, res, next) => {
-  var err = new Error('Not Found');
+  var err = new Error("Not Found");
   err.status = 404;
   next(err);
 });
@@ -44,3 +44,5 @@ api.use((err, req, res, next) => {
 api.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}.`);
 });
+
+module.exports = api;
