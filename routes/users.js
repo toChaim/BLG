@@ -9,7 +9,7 @@ const {
 
 router.get("/", (req, res, next) => {
   User.find()
-    .then(users => res.json(users))
+    .then(users => res.json(users.map(v => v.username)))
     .catch(err => next(err));
 });
 
@@ -18,7 +18,7 @@ router.get("/:id", (req, res, next) => {
     .then(user => {
       if (!user) return next();
       if (isLoggedIn(req)) {
-        res.json(user);
+        res.json({ username: user.username, emai: user.email });
       } else {
         res.json({ username: user.username });
       }
