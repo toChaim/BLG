@@ -1,10 +1,11 @@
 {
   "name": "BLG",
   "version": "1.0.0",
-  "description": "A game companie dedicated to make life better for our players, our programers, and people who live near them.",
+  "description":
+    "A game companie dedicated to make life better for our players, our programers, and people who live near them.",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
