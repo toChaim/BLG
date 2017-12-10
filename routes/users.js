@@ -2,6 +2,7 @@ const { User } = require("../models");
 const router = require("express").Router();
 const {
   login,
+  isLoggedIn,
   ensureLoggedIn,
   ensureCorrectUser
 } = require("../middleware/auth");
@@ -16,7 +17,11 @@ router.get("/:id", (req, res, next) => {
   User.findById(req.params.id)
     .then(user => {
       if (!user) return next();
-      res.json(user);
+      if (isLoggedIn(req)) {
+        res.json(user);
+      } else {
+        res.json({ username: user.username });
+      }
     })
     .catch(err => next(err));
 });
