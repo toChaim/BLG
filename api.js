@@ -3,7 +3,7 @@ const PORT = process.env.PORT || 3001;
 
 //First Middleware
 api.use((req, res, next) => {
-  console.log(req);
+  //console.log(req);
   next();
 });
 
