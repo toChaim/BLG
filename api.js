@@ -8,8 +8,24 @@ api.use((req, res, next) => {
 });
 
 //Routes
-api.use('/', (req, res, next) => {
+api.get('/', (req, res, next) => {
+  console.log('root triggered');
   res.json({ message: 'Main Page' });
+});
+
+// 404 Not Found
+api.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  return next(err);
+});
+
+// 500 Server Error
+api.use((err, req, res, next) => {
+  return res.status(err.status || 500).json({
+    message: err.message,
+    error: err
+  });
 });
 
 //Start Server

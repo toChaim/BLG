@@ -7,7 +7,7 @@ describe('GET / gets the main page', () => {
     request(api)
       .get('/')
       .set('Accept', 'application/json')
-      .expect(200)
+      .expect(200, { message: 'Main Page' })
       .end((err, res) => {
         console.log(err);
         if (err) return done(err);
@@ -21,7 +21,10 @@ describe('GET /id should retrun an error', () => {
     request(api)
       .get('/id')
       .set('Accept', 'application/json')
-      .expect(404)
+      .expect(404, {
+        message: 'Not Found',
+        error: { status: 404 }
+      })
       .end((err, res) => {
         console.log(err);
         if (err) return done(err);
