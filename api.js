@@ -16,3 +16,5 @@ api.use('/', (req, res, next) => {
 api.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
+
+module.exports = api;
