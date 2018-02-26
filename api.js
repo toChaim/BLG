@@ -1,5 +1,10 @@
+// Node Modules
 const api = require('express')();
+// Configurables
 const PORT = process.env.PORT || 3001;
+// Local Modules
+const gamesRoutes = require('./routes/games');
+const usersRoutes = require('./routes/users');
 
 //First Middleware
 api.use((req, res, next) => {
@@ -8,10 +13,7 @@ api.use((req, res, next) => {
 });
 
 //Routes
-api.get('/', (req, res, next) => {
-  console.log('root triggered');
-  res.json({ message: 'Main Page' });
-});
+api.get('/', gamesRoutes);
 
 // 404 Not Found
 api.use((req, res, next) => {
