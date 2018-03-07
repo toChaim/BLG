@@ -13,7 +13,7 @@ api.use((req, res, next) => {
 });
 
 //Routes
-api.get('/', gamesRoutes);
+api.use('/', gamesRoutes);
 
 // 404 Not Found
 api.use((req, res, next) => {
