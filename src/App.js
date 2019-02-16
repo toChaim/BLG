@@ -9,7 +9,6 @@ class App extends Component {
     this.state = {
       time: new Date()
     };
-    this.handleChange.bind(this);
     this.intervalHandler = setInterval(this.handleChange.bind(this), 1000);
   }
 
