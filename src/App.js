@@ -4,17 +4,17 @@ import './App.css';
 import TimerDisplay from './components/TimerDisplay';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      time: new Date()
+      time: new Date(),
     };
     this.intervalHandler = setInterval(this.handleChange.bind(this), 1000);
   }
 
-  handleChange(event) {
+  handleChange() {
     this.setState({
-      time: new Date()
+      time: new Date(),
     });
   }
 
@@ -25,7 +25,7 @@ class App extends Component {
           <p>
             Better Living Games
           </p>
-          <TimerDisplay time={this.state.time}/>
+          <TimerDisplay time={this.state.time} />
         </header>
       </div>
     );
