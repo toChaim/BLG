@@ -7,14 +7,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: new Date(),
+      time: new Date()/1000,
     };
     this.intervalHandler = setInterval(this.handleChange.bind(this), 1000);
   }
 
   handleChange() {
     this.setState({
-      time: new Date(),
+      time: new Date()/1000,
     });
   }
 
