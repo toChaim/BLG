@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/toChaim/BLG/issues"
   },
-  "homepage": "https://github.com/toChaim/BLG#readme"
+  "homepage": "https://github.com/toChaim/BLG#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
