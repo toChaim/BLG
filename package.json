@@ -1,29 +1,24 @@
 {
   "name": "blg",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
-  },
+  "version": "1.0.0",
+  "description": "Better Living Games",
+  "main": "app.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "test"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toChaim/BLG.git"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+  "keywords": [
+    "Better",
+    "Living",
+    "Games"
   ],
-  "devDependencies": {
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.9.1"
-  }
+  "author": "Chaim Finkelman",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/toChaim/BLG/issues"
+  },
+  "homepage": "https://github.com/toChaim/BLG#readme"
 }
