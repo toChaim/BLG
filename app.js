@@ -1,28 +1,11 @@
 const express = require("express");
+const bodyParser = require('body-parser');
+const userRoutes = require('./routes');
+
 const app = express();
+app.use(bodyParser.json());
+app.use(userRoutes);
 
-var Users = {
-  chaim: {
-    email: 'toChaim@gmail.com',
-    passhash: 'xxxxxxx12345',
-    privacy: 'public',
-    friends: [],
-  }
-}
+app.get('/', (req, res) => res.json('Welcome to BLG!'));
 
-// home
-app.get("/", (req, res) => res.send("BLG"));
-// prayer
-// gratbot
-// CBT
-// users
-app.get("/users/:username", (req, res) => {
-  res.json(Users[req.params.username]);
-});
-app.get("/users", (req, res) => {
-  res.send(Object.keys(Users));
-});
-app.post("/users/", (req, res) => {
-
-})
 app.listen(3000, () => console.log("app listening on prot 3000"));
