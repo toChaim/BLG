@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes');
 
@@ -8,4 +8,4 @@ app.use(userRoutes);
 
 app.get('/', (req, res) => res.json('Welcome to BLG!'));
 
-app.listen(3000, () => console.log("app listening on prot 3000"));
+module.exports = app;
