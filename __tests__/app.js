@@ -10,4 +10,12 @@ describe('Test App', () => {
       expect(res.body).toMatchSnapshot();
     });
   });
+  describe('Post / ', () => {
+    test('Should return home page', async () => {
+      const res = await request(app).post('/');
+      expect(res.statusCode).toBe(200);
+      expect(res.type).toBe('text/html');
+      expect(res.body).toMatchSnapshot();
+    });
+  });
 });
