@@ -1,20 +1,27 @@
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
-const apiRoutes = require('./src/api');
 
+const apiRoutes = require('./src/api');
 
 const { NODE_ENV, PORT = 5000 } = process.env;
 
 const app = express();
 
+
+// serve react for prod
 if (NODE_ENV === 'production') {
-  app.use('/api', apiRoutes);
   app.use(express.static('build'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   });
 }
+else {
+  app.use(cors({ origin: 'http://localhost:3000' }));
+}
+
+app.use('/api', apiRoutes);
 
 app.listen(PORT, (err) => {
   if (err) { return console.log(err); }
