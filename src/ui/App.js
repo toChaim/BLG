@@ -1,4 +1,5 @@
 import './App.css';
+import Content from './Content';
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
         <h1>Better Living Games</h1>
       </header>
       <main className="App-main">
-
+        <Content />
       </main>
       <footer className="App-footer">
 
