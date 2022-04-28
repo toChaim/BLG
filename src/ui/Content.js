@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const { HEROKU_APP_NAME } = process.env;
+const { NODE_ENV, PORT = 5000 } = process.env;
 console.log(process.env);
-const url = HEROKU_APP_NAME ? `https://${HEROKU_APP_NAME}.herokuapp.com` : 'http://localhost:5000/api';
+const url = NODE_ENV ? `https://better-living-games.herokuapp.com` : `http://localhost:${PORT}/api`;
 
 function Content() {
   const [content, setContent] = useState('loading content');
