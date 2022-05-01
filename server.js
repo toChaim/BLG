@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const path = require('path');
 
-const apiRoutes = require('./src/api');
+const apiRoutes = require('./src/server');
 
 const { NODE_ENV, PORT = 5000 } = process.env;
 
