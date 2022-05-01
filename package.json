@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "server": "nodemon server",
     "client": "react-scripts start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "REACT_APP_NODE_ENV=development REACT_APP_HOST=http://localhost concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": [
