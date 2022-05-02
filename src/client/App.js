@@ -1,5 +1,7 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import Content from './Content';
+import Content from './components/Content';
+import Labyrinth from './components/Labyrinth';
 
 function App() {
   return (
@@ -8,12 +10,15 @@ function App() {
         <h1>Better Living Games</h1>
       </header>
       <main className="App-main">
-        <Content />
+        <Routes>
+          <Route path="/" element={<Content />} />
+          <Route path="/games" element={<Labyrinth />} />
+        </Routes>
       </main>
       <footer className="App-footer">
 
       </footer>
-    </div>
+    </div >
   );
 }
 

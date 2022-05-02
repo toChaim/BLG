@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-import { NODE_ENV, PORT, HOST } from '../ENV';
-import { PRODUCTION_HOST } from '../CONSTANTS';
+import { PORT, HOST } from '../../ENV';
+import { PRODUCTION_HOST } from '../../CONSTANTS';
 
 const url = HOST === PRODUCTION_HOST ? `${HOST}/api` : `${HOST}:${PORT}/api`;
 
@@ -21,9 +20,6 @@ function Content() {
 
   return (
     <div className="content">
-      <p>url={url}</p>
-      <p>HOST={HOST}</p>
-      <p>NODE_ENV={NODE_ENV}</p>
       {content}
     </div>
   );
