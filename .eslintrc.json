@@ -15,7 +15,8 @@
         "sourceType": "module",
         "allowImportExportEverywhere": true,
         "ecmaFeatures": {
-            "jsx": true
+            "jsx": true,
+            "modules": true
         }
     },
     "rules": {
@@ -35,19 +36,13 @@
             "error",
             "always"
         ],
-        "react/jsx-no-bind": [
-            "error",
-            {
-                "allowArrowFunctions": true,
-                "allowBind": false,
-                "ignoreRefs": true
-            }
+        "strict": [
+            2,
+            "never"
         ],
-        "react/no-did-update-set-state": "error",
-        "react/no-unknown-property": "error",
-        "react/no-unused-prop-types": "error",
-        "react/prop-types": "error",
-        "react/react-in-jsx-scope": "error"
+        "react/jsx-uses-react": 2,
+        "react/jsx-uses-vars": 2,
+        "react/react-in-jsx-scope": 2
     },
     "settings": {
         "react": {

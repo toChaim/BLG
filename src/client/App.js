@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import React, { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Content from './components/Content';
 import Labyrinth from './components/Labyrinth';
