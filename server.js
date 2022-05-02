@@ -3,24 +3,27 @@ const cors = require('cors');
 const express = require('express');
 const path = require('path');
 
+const { PRODUCTION, LOCALHOST } = require('./src/CONSTANTS');
+const { HOST, NODE_ENV, PORT } = require('./src/ENV');
 const apiRoutes = require('./src/server');
 
-const { NODE_ENV, PORT = 5000 } = process.env;
+// const { NODE_ENV, PORT = 5000 } = process.env;
 
 const app = express();
 
 
-if (NODE_ENV !== 'production') {
-  app.use(cors({ origin: 'http://localhost:3000' }));
+if (HOST === LOCALHOST) {
+  app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5000'] }));
 }
 
 app.use('/api', apiRoutes);
 
-app.use(express.static('build'));
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
-
+if (NODE_ENV === PRODUCTION) {
+  app.use(express.static('build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
+}
 
 app.listen(PORT, (err) => {
   if (err) { return console.log(err); }

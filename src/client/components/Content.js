@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const { NODE_ENV, PORT = 5000 } = process.env;
-const url = NODE_ENV === 'production' ? 'https://better-living-games.herokuapp.com/api' : `http://localhost:${PORT}/api`;
+import { PORT, HOST } from '../../ENV';
+import { PRODUCTION_HOST } from '../../CONSTANTS';
+
+const url = HOST === PRODUCTION_HOST ? `${HOST}/api` : `${HOST}:${PORT}/api`;
 
 function Content() {
   const [content, setContent] = useState('loading content');
