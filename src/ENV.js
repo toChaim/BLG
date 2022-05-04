@@ -6,4 +6,6 @@ const ENV = Object.assign({
   NODE_ENV: process.env.REACT_APP_NODE_ENV || PRODUCTION,
 }, process.env);
 
+console.log(ENV, process.env);
+
 module.exports = ENV;
