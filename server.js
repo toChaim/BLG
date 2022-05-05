@@ -3,7 +3,9 @@ const cors = require('cors');
 const express = require('express');
 const path = require('path');
 
-const { PRODUCTION, LOCALHOST } = require('./src/CONSTANTS');
+const { PRODUCTION, LOCALHOST, DEVLOPMENT } = require('./src/CONSTANTS');
+const ENV = require('./src/ENV');
+console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&', 'ENV=', ENV, '&&&&&&&&&&&&&&&&&&&');
 const { HOST, NODE_ENV, PORT } = require('./src/ENV');
 const apiRoutes = require('./src/server');
 
@@ -18,7 +20,7 @@ if (HOST === LOCALHOST) {
 
 app.use('/api', apiRoutes);
 
-if (NODE_ENV === PRODUCTION) {
+if (NODE_ENV !== DEVLOPMENT) {
   app.use(express.static('build'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
