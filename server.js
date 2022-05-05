@@ -3,9 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const path = require('path');
 
-const { PRODUCTION, LOCALHOST, DEVLOPMENT } = require('./src/CONSTANTS');
-const ENV = require('./src/ENV');
-console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&', 'ENV=', ENV, '&&&&&&&&&&&&&&&&&&&');
+const { LOCALHOST, DEVLOPMENT } = require('./src/CONSTANTS');
 const { HOST, NODE_ENV, PORT } = require('./src/ENV');
 const apiRoutes = require('./src/server');
 

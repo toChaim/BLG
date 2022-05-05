@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ENV = require('../../ENV');
-console.log('******************', 'ENV=', ENV, '&&&&&&&&&&&&&&&&&&&');
 import { PORT, HOST } from '../../ENV';
 import { PRODUCTION_HOST } from '../../CONSTANTS';
 
