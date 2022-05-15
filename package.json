@@ -1,52 +1,49 @@
 {
   "name": "better-living-games",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "engines": {
+    "node": "14.x"
+  },
+  "description": "Better Living Games",
+  "keywords": [
+    "games",
+    "gamification",
+    "positive psychology"
+  ],
+  "scripts": {
+    "start": "node api/dist/index.js",
+    "postinstall": "cd client && yarn run build && cd ../api && yarn run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toChaim/BLG.git"
+  },
+  "author": "Chaim Finkelman",
+  "license": "",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
+    "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-    "body-parser": "^1.20.0",
-    "cors": "^2.8.5",
-    "eslint-config-react-app": "^7.0.1",
-    "express": "^4.18.0",
-    "morgan": "^1.10.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "node server",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon server",
-    "client": "react-scripts start",
-    "dev": "REACT_APP_NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "web-vitals": "^2.1.4",
+    "@loopback/boot": "^4.1.2",
+    "@loopback/core": "^3.1.2",
+    "@loopback/repository": "^4.1.2",
+    "@loopback/rest": "^11.1.2",
+    "@loopback/rest-explorer": "^4.1.2",
+    "@loopback/service-proxy": "^4.1.2",
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "concurrently": "^7.1.0",
-    "nodemon": "^2.0.15"
+    "@loopback/build": "^8.1.2",
+    "source-map-support": "^0.5.21",
+    "@loopback/testlab": "^4.1.2",
+    "@types/node": "^12.20.47",
+    "@loopback/eslint-config": "^12.0.4",
+    "eslint": "^8.10.0",
+    "typescript": "~4.6.3"
   }
 }
