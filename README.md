@@ -10,12 +10,12 @@ yarn start
 
 # Build for development
 ```bash
-nvm use 14
+nvm use 16
 cd ./client
 yarn install
 yarn start
 # in a second terminal 
-nvm use 14
+nvm use 16
 cd ./api
 yarn install 
 yarn start
